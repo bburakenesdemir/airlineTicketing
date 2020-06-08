@@ -6,6 +6,7 @@ import com.airline.ticketing.ticketer.controller.mapper.FlightMapper;
 import com.airline.ticketing.ticketer.data.Flight;
 import com.airline.ticketing.ticketer.dto.FlightDto;
 import com.airline.ticketing.ticketer.resource.FlightResource;
+import com.airline.ticketing.ticketer.resource.PriceResource;
 import com.airline.ticketing.ticketer.service.EntityService;
 import com.airline.ticketing.ticketer.service.FlightService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,6 +32,11 @@ public class FlightController extends EntityController<FlightDto, Flight, Flight
         FlightResource resource = getMapper().toResource(flightService.save(dto));
         resource.addLinks(getService().getTopicClass().getSimpleName().toLowerCase());
         return ResponseEntity.ok(resource);
+    }
+
+    @RequestMapping(name = "/{id}/price",method = RequestMethod.GET)
+    public ResponseEntity<PriceResource> getPrice(@PathVariable("id") Long id) {
+        return ResponseEntity.ok(flightService.getPriceDetail(id));
     }
 
     @RequestMapping(path = "/company/{companyId}", method = RequestMethod.GET)

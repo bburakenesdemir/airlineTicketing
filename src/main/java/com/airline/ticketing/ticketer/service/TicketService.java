@@ -15,7 +15,7 @@ public class TicketService extends EntityService<Ticket> {
     @Autowired
     private TicketRepository ticketRepository;
 
-    private Integer countByFlight(Flight flight) {
+    public Integer countByFlight(Flight flight) {
         return ticketRepository.countAllByFlight(flight);
     }
 
