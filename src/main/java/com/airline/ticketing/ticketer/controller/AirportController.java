@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/airline")
+@RequestMapping("/airport")
 public class AirportController extends EntityController<AirportDto, Airport, AirportResource>{
 
     @Autowired
