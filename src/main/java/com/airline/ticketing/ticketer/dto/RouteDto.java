@@ -7,4 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class RouteDto extends EntityDto {
 
+    private Long fromAirportId;
+
+    private Long toAirportId;
 }

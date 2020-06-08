@@ -7,4 +7,7 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class RouteResource extends EntityResource {
 
+    private AirportResource from;
+
+    private AirportResource to;
 }
