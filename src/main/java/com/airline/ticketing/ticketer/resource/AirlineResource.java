@@ -6,4 +6,6 @@ import lombok.EqualsAndHashCode;
 @Data
 @EqualsAndHashCode(callSuper = true)
 public class AirlineResource extends EntityResource {
+
+    private String city;
 }

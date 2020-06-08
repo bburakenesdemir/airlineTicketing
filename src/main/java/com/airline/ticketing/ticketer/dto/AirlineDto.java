@@ -7,4 +7,6 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class AirlineDto extends EntityDto {
 
+    private String city;
+
 }
