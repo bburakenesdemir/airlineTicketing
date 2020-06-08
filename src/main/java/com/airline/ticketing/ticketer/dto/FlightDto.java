@@ -12,4 +12,6 @@ public class FlightDto extends EntityDto {
     private Long companyId;
 
     private String dateStr;
+
+    private Integer capacity;
 }

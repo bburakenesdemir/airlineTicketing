@@ -32,17 +32,18 @@ public class InitService {
         Airport airport1 = createAirport("istanbul");
         Airport airport2 = createAirport("ankara");
         Route route = createRoute(airport1, airport2);
-        Flight flight = createFlight(company, route);
+        Flight flight = createFlight(company, route, 100);
         System.out.println(flight);
     }
 
-    private Flight createFlight(Company company, Route route) {
+    private Flight createFlight(Company company, Route route, Integer capacity) {
         Flight flight = new Flight();
         flight.setName("test flight");
         flight.setDesc("test flight desc");
         flight.setDate(Date.valueOf(LocalDate.now()));
         flight.setCompany(company);
         flight.setRoute(route);
+        flight.setCapacity(capacity);
         return flightService.save(flight);
     }
 

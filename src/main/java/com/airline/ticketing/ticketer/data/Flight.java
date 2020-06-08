@@ -23,4 +23,6 @@ public class Flight extends BaseEntity {
     @Column
     private Date date;
 
+    @Column
+    private Integer capacity;
 }

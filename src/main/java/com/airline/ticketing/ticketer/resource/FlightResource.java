@@ -14,4 +14,6 @@ public class FlightResource extends EntityResource {
     private RouteResource route;
 
     private Date date;
+
+    private Integer capacity;
 }
