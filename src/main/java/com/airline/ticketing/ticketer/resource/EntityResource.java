@@ -14,11 +14,11 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 @Data
 public abstract class EntityResource<ENTITY extends BaseEntity> extends RepresentationModel<EntityResource<ENTITY>> {
 
-    public Long id;
+    private Long id;
 
-    public Date creationDate;
+    private Date creationDate;
 
-    public Date lastUpdateDate;
+    private Date lastUpdateDate;
 
     private String name;
 

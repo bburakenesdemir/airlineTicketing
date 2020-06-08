@@ -14,13 +14,13 @@ public class BaseEntity {
 
     @Id
     @GeneratedValue
-    public Long id;
+    private Long id;
 
     @Column(name = "creation_date")
-    public Date creationDate;
+    private Date creationDate;
 
     @Column(name = "last_update_date")
-    public Date lastUpdateDate;
+    private Date lastUpdateDate;
 
     @Column
     private String name;
