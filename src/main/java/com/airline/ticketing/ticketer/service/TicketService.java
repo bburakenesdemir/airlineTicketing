@@ -1,5 +1,6 @@
 package com.airline.ticketing.ticketer.service;
 
+import com.airline.ticketing.ticketer.data.Flight;
 import com.airline.ticketing.ticketer.data.Ticket;
 import com.airline.ticketing.ticketer.data.repository.TicketRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +14,10 @@ public class TicketService extends EntityService<Ticket> {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    private Integer countByFlight(Flight flight) {
+        return ticketRepository.countAllByFlight(flight);
+    }
 
     @Override
     public JpaRepository<Ticket, Long> getRepository() {
