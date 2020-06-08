@@ -1,6 +1,7 @@
 package com.airline.ticketing.ticketer.controller.exception;
 
 import com.airline.ticketing.ticketer.resource.ErrorResource;
+import org.omg.CORBA.BAD_PARAM;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -29,6 +30,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
     protected ResponseEntity<Object> handleEmptyResultDataAccessException(EmptyResultDataAccessException ex, WebRequest request) {
         return handleException(HttpStatus.NOT_FOUND, ex, request);
     }
+
+   @ExceptionHandler
+   protected ResponseEntity<Object> handleBAD_PARAM(BAD_PARAM ex, WebRequest request) {
+        return handleException(HttpStatus.BAD_REQUEST, ex, request);
+   }
 
     private ResponseEntity<Object> handleException(HttpStatus status, RuntimeException ex, WebRequest request) {
         return handleExceptionInternal(ex, createErrorResource(status, ex.getMessage()),
