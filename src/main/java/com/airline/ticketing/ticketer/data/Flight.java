@@ -8,7 +8,7 @@ import java.sql.Date;
 
 @Data
 @Entity
-@Table(name = "route")
+@Table(name = "flight")
 @EqualsAndHashCode(callSuper = true)
 public class Flight extends BaseEntity {
 
@@ -22,4 +22,5 @@ public class Flight extends BaseEntity {
 
     @Column
     private Date date;
+
 }
