@@ -28,7 +28,7 @@ public abstract class EntityService<ENTITY extends BaseEntity> {
         return optional.get();
     }
 
-    private Class<ENTITY> getTopicClass() {
+    public Class<ENTITY> getTopicClass() {
         return (Class<ENTITY>)
                 ((ParameterizedType) getClass()
                         .getGenericSuperclass())

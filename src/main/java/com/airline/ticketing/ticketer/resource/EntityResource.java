@@ -1,11 +1,18 @@
 package com.airline.ticketing.ticketer.resource;
 
+import com.airline.ticketing.ticketer.controller.EntityController;
+import com.airline.ticketing.ticketer.data.BaseEntity;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
+import org.springframework.hateoas.RepresentationModel;
 
 import java.sql.Date;
 
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+
+@EqualsAndHashCode(callSuper = true)
 @Data
-public class EntityResource {
+public abstract class EntityResource<ENTITY extends BaseEntity> extends RepresentationModel<EntityResource<ENTITY>> {
 
     public Long id;
 
@@ -16,5 +23,20 @@ public class EntityResource {
     private String name;
 
     private String desc;
+
+    public void addLinks(String entityName) {
+        add(linkTo(EntityController.class)
+                .slash(entityName)
+                .slash(id)
+                .withRel("get").withType("GET"));
+        add(linkTo(EntityController.class)
+                .slash(entityName)
+                .slash(id)
+                .withRel("delete").withType("DELETE"));
+        add(linkTo(EntityController.class)
+                .slash(entityName)
+                .slash(id)
+                .withRel("update").withType("PUT"));
+    }
 
 }

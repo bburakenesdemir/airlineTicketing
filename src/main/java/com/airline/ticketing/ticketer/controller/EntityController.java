@@ -2,6 +2,7 @@ package com.airline.ticketing.ticketer.controller;
 
 import com.airline.ticketing.ticketer.controller.mapper.EntityMapper;
 import com.airline.ticketing.ticketer.data.BaseEntity;
+import com.airline.ticketing.ticketer.resource.EntityResource;
 import com.airline.ticketing.ticketer.service.EntityService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -11,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.List;
 
-public abstract class EntityController<DTO, ENTITY extends BaseEntity, RESOURCE> {
+public abstract class EntityController<DTO, ENTITY extends BaseEntity, RESOURCE extends EntityResource> {
 
     public abstract EntityService<ENTITY> getService();
 
@@ -19,7 +20,9 @@ public abstract class EntityController<DTO, ENTITY extends BaseEntity, RESOURCE>
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
     public ResponseEntity<RESOURCE> get(@PathVariable("id") Long id) {
-        return ResponseEntity.ok(getMapper().toResource(getService().getEntity(id)));
+        RESOURCE resource = getMapper().toResource(getService().getEntity(id));
+        resource.addLinks(getService().getTopicClass().getSimpleName().toLowerCase());
+        return ResponseEntity.ok(resource);
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
