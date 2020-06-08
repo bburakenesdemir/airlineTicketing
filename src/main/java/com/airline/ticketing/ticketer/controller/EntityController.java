@@ -28,13 +28,17 @@ public abstract class EntityController<DTO, ENTITY extends BaseEntity, RESOURCE 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<RESOURCE> update(@PathVariable("id") Long id, @RequestBody DTO dto) {
         ENTITY entity = getMapper().toEntity(dto);
-        return ResponseEntity.ok(getMapper().toResource(getService().update(id, entity)));
+        RESOURCE resource = getMapper().toResource(getService().update(id, entity));
+        resource.addLinks(getService().getTopicClass().getSimpleName().toLowerCase());
+        return ResponseEntity.ok(resource);
     }
 
     @RequestMapping(method = RequestMethod.POST)
     public ResponseEntity<RESOURCE> save(@RequestBody DTO dto) {
         ENTITY entity = getMapper().toEntity(dto);
-        return ResponseEntity.ok(getMapper().toResource(getService().save(entity)));
+        RESOURCE resource = getMapper().toResource(getService().save(entity));
+        resource.addLinks(getService().getTopicClass().getSimpleName().toLowerCase());
+        return ResponseEntity.ok(resource);
     }
 
     @RequestMapping(path = "/all", method = RequestMethod.GET)
