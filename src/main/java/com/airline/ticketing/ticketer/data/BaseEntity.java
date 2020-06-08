@@ -2,10 +2,7 @@ package com.airline.ticketing.ticketer.data;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
 import java.sql.Date;
 
 @Data
@@ -13,7 +10,7 @@ import java.sql.Date;
 public class BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(name = "creation_date")
