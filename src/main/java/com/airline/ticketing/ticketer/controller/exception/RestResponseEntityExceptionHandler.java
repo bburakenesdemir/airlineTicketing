@@ -2,6 +2,7 @@ package com.airline.ticketing.ticketer.controller.exception;
 
 import com.airline.ticketing.ticketer.resource.ErrorResource;
 import org.omg.CORBA.BAD_PARAM;
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -33,6 +34,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
 
    @ExceptionHandler
    protected ResponseEntity<Object> handleBAD_PARAM(BAD_PARAM ex, WebRequest request) {
+        return handleException(HttpStatus.BAD_REQUEST, ex, request);
+   }
+
+   @ExceptionHandler
+   protected ResponseEntity<Object> handleDataIntegrityViolationException(DataIntegrityViolationException ex, WebRequest request) {
         return handleException(HttpStatus.BAD_REQUEST, ex, request);
    }
 
