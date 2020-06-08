@@ -1,6 +1,8 @@
 package com.airline.ticketing.ticketer.service;
 
 import com.airline.ticketing.ticketer.data.BaseEntity;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import javax.persistence.NoResultException;
@@ -52,6 +54,8 @@ public abstract class EntityService<ENTITY extends BaseEntity> {
 
         return getRepository().saveAndFlush(entity);
     }
+
+    public abstract Page<ENTITY> pageableSearch(Pageable pageable, String text);
 
     public List<ENTITY> all() {
         return getRepository().findAll();

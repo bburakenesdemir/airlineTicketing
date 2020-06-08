@@ -4,11 +4,12 @@ import com.airline.ticketing.ticketer.controller.mapper.EntityMapper;
 import com.airline.ticketing.ticketer.data.BaseEntity;
 import com.airline.ticketing.ticketer.resource.EntityResource;
 import com.airline.ticketing.ticketer.service.EntityService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -50,5 +51,23 @@ public abstract class EntityController<DTO, ENTITY extends BaseEntity, RESOURCE 
     public ResponseEntity delete(@PathVariable("id") Long id) {
         getService().deleteById(id);
         return ResponseEntity.ok().build();
+    }
+
+    @RequestMapping(path = "/search/{text}", method = RequestMethod.GET)
+    public ResponseEntity<Page<RESOURCE>> search(@PathVariable("text") String text,
+                                                 @RequestParam(defaultValue = "0", required = false) Integer pageNo,
+                                                 @RequestParam(defaultValue = "10", required = false) Integer pageSize,
+                                                 @RequestParam(defaultValue = "id", required = false) String sortBy,
+                                                 @RequestParam(defaultValue = "ASC", required = false) String direction) {
+        Pageable pageable = PageRequest.of(pageNo, pageSize, Sort.Direction.valueOf(direction), sortBy);
+        return ResponseEntity.ok(
+                getService().pageableSearch(pageable, text).map(
+                        entity -> {
+                            RESOURCE resource = getMapper().toResource(entity);
+                            resource.addLinks(getService().getTopicClass().getSimpleName().toLowerCase());
+                            return resource;
+                        }
+                )
+        );
     }
 }
