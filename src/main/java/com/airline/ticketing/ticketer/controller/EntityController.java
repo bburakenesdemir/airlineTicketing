@@ -38,4 +38,10 @@ public abstract class EntityController<DTO, ENTITY extends BaseEntity, RESOURCE>
     public ResponseEntity<List<RESOURCE>> all() {
         throw new UnsupportedOperationException();
     }
+
+    @RequestMapping(path = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity delete(@PathVariable("id") Long id) {
+        getService().deleteById(id);
+        return ResponseEntity.ok().build();
+    }
 }

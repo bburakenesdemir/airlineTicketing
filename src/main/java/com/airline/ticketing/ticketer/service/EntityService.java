@@ -12,7 +12,7 @@ import java.util.Optional;
 
 public abstract class EntityService<ENTITY extends BaseEntity> {
 
-    abstract JpaRepository<ENTITY, Long> getRepository();
+    public abstract JpaRepository<ENTITY, Long> getRepository();
 
     public ENTITY getEntity(Long id) {
         Optional<ENTITY> optional = getRepository().findById(id);
@@ -36,10 +36,11 @@ public abstract class EntityService<ENTITY extends BaseEntity> {
     }
 
     public ENTITY update(Long id, ENTITY entity) {
-
+        ENTITY old = getEntity(id);
         entity.setId(id);
         LocalDate now = LocalDate.now();
         entity.setLastUpdateDate(Date.valueOf(now));
+        entity.setCreationDate(old.getCreationDate());
 
         return getRepository().saveAndFlush(entity);
     }
@@ -56,8 +57,8 @@ public abstract class EntityService<ENTITY extends BaseEntity> {
         return getRepository().findAll();
     }
 
-    public void delete(ENTITY entity) {
-        getRepository().delete(entity);
+    public void deleteById(Long id) {
+        getRepository().deleteById(id);
     }
 
 }
