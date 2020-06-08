@@ -25,4 +25,7 @@ public class Flight extends BaseEntity {
 
     @Column
     private Integer capacity;
+
+    @Column
+    private Double price;
 }

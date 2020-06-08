@@ -16,4 +16,6 @@ public class FlightResource extends EntityResource {
     private Date date;
 
     private Integer capacity;
+
+    private Double price;
 }

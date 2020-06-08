@@ -14,4 +14,6 @@ public class FlightDto extends EntityDto {
     private String dateStr;
 
     private Integer capacity;
+
+    private Double price;
 }
