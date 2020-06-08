@@ -15,5 +15,5 @@ public class FlightDto extends EntityDto {
 
     private Integer capacity;
 
-    private Double price;
+    private Double basePrice;
 }
