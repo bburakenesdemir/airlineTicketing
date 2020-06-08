@@ -10,6 +10,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "airline")
 @EqualsAndHashCode(callSuper = true)
-public class Airline extends BaseEntity {
+public class Route extends BaseEntity {
 
 }
