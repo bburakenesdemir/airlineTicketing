@@ -7,14 +7,12 @@ import com.airline.ticketing.ticketer.dto.AirlineDto;
 import com.airline.ticketing.ticketer.resource.AirlineResource;
 import com.airline.ticketing.ticketer.service.AirlineService;
 import com.airline.ticketing.ticketer.service.EntityService;
-import io.swagger.annotations.Api;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/airline")
-@Api("Airline Ticketer - Airline Api")
 public class AirlineController extends EntityController<AirlineDto, Airline, AirlineResource>{
 
     @Autowired
