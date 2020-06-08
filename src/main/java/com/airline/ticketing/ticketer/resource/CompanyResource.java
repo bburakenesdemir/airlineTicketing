@@ -7,8 +7,4 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class CompanyResource extends EntityResource {
 
-    private String name;
-
-    private String desc;
-
 }

@@ -7,8 +7,4 @@ import lombok.EqualsAndHashCode;
 @EqualsAndHashCode(callSuper = true)
 public class CompanyDto extends EntityDto {
 
-    private String name;
-
-    private String desc;
-
 }

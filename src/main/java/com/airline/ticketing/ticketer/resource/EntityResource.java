@@ -13,4 +13,8 @@ public class EntityResource {
 
     public Date lastUpdateDate;
 
+    private String name;
+
+    private String desc;
+
 }

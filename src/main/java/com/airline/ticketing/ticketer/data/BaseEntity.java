@@ -22,4 +22,9 @@ public class BaseEntity {
     @Column(name = "last_update_date")
     public Date lastUpdateDate;
 
+    @Column
+    private String name;
+
+    @Column
+    private String desc;
 }
