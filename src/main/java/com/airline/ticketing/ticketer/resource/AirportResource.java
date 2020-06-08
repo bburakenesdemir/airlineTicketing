@@ -1,12 +1,11 @@
-package com.airline.ticketing.ticketer.dto;
+package com.airline.ticketing.ticketer.resource;
 
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 
 @Data
 @EqualsAndHashCode(callSuper = true)
-public class AirlineDto extends EntityDto {
+public class AirportResource extends EntityResource {
 
     private String city;
-
 }

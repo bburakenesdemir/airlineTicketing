@@ -9,9 +9,9 @@ import javax.persistence.Table;
 
 @Data
 @Entity
-@Table(name = "airline")
+@Table(name = "airport")
 @EqualsAndHashCode(callSuper = true)
-public class Airline extends BaseEntity {
+public class Airport extends BaseEntity {
 
     @Column
     private String city;
