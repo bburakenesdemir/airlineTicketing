@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/company")
-@Api("Airline Ticketer Company Api")
+@Api("Airline Ticketer - Company Api")
 public class CompanyController extends EntityController<CompanyDto, Company, CompanyResource>{
 
     @Autowired
