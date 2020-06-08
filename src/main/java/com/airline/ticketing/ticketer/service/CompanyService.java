@@ -13,7 +13,7 @@ public class CompanyService extends EntityService<Company>{
     private CompanyRepository companyRepository;
 
     @Override
-    JpaRepository<Company, Long> getRepository() {
+    public JpaRepository<Company, Long> getRepository() {
         return companyRepository;
     }
 }

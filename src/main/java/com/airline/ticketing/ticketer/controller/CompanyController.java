@@ -24,12 +24,12 @@ public class CompanyController extends EntityController<CompanyDto, Company, Com
     private CompanyMapper companyMapper;
 
     @Override
-    public EntityService getService() {
+    public EntityService<Company> getService() {
         return companyService;
     }
 
     @Override
-    public EntityMapper getMapper() {
+    public EntityMapper<CompanyDto, Company, CompanyResource> getMapper() {
         return companyMapper;
     }
 }
