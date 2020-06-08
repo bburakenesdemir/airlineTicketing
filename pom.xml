@@ -8,7 +8,7 @@
         <version>2.3.0.RELEASE</version>
         <relativePath/>
     </parent>
-    <groupId>com.airline.ticketing</groupId>
+    <groupId>com.airport.ticketing</groupId>
     <artifactId>ticketer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>ticketer</name>
