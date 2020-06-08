@@ -35,6 +35,8 @@ public class FlightService extends EntityService<Flight> {
         flight.setDate(DateUtil.toFlightDate(dto.getDateStr()));
         flight.setName(dto.getName());
         flight.setDesc(dto.getDesc());
+        flight.setCapacity(dto.getCapacity());
+        flight.setPrice(dto.getPrice());
 
         return save(flight);
     }
