@@ -9,9 +9,9 @@ import java.sql.Date;
 @EqualsAndHashCode(callSuper = true)
 public class FlightResource extends EntityResource {
 
-    private CompanyResource companyResource;
+    private CompanyResource company;
 
-    private RouteResource routeResource;
+    private RouteResource route;
 
     private Date date;
 }

@@ -9,5 +9,7 @@ public class FlightDto extends EntityDto {
 
     private Long routeId;
 
-    private String date;
+    private Long companyId;
+
+    private String dateStr;
 }

@@ -1,5 +1,6 @@
 package com.airline.ticketing.ticketer.data.repository;
 
+import com.airline.ticketing.ticketer.data.Company;
 import com.airline.ticketing.ticketer.data.Flight;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -10,4 +11,6 @@ import org.springframework.stereotype.Repository;
 public interface FlightRepository extends JpaRepository<Flight, Long> {
 
     Page<Flight> findAllByNameContainsOrDescContains(String namePart, String DescPart, Pageable pageable);
+
+    Page<Flight> findAllByCompany(Company company, Pageable pageable);
 }
