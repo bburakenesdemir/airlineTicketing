@@ -1,9 +1,6 @@
 package com.airline.ticketing.ticketer.service;
 
-import com.airline.ticketing.ticketer.data.Airport;
-import com.airline.ticketing.ticketer.data.Company;
-import com.airline.ticketing.ticketer.data.Flight;
-import com.airline.ticketing.ticketer.data.Route;
+import com.airline.ticketing.ticketer.data.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -26,14 +23,31 @@ public class InitService {
     @Autowired
     private FlightService flightService;
 
+    @Autowired
+    private TicketService ticketService;
+
     @PostConstruct
     public void init() {
         Company company = createCompany();
         Airport airport1 = createAirport("istanbul");
         Airport airport2 = createAirport("ankara");
         Route route = createRoute(airport1, airport2);
-        Flight flight = createFlight(company, route, 100);
+        Flight flight = createFlight(company, route, 40);
         System.out.println(flight);
+
+        for (int i = 1; i <= 5; i++) {
+            createTicket(flight, i);
+        }
+    }
+
+    private Ticket createTicket(Flight flight, int index) {
+        Ticket ticket = new Ticket();
+        ticket.setCardNumber("1234");
+        ticket.setFlight(flight);
+        ticket.setName("ticket" + index);
+        ticket.setDesc("ticket" + index + " desc");
+
+        return ticketService.save(ticket);
     }
 
     private Flight createFlight(Company company, Route route, Integer capacity) {
