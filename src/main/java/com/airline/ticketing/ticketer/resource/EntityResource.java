@@ -37,6 +37,9 @@ public abstract class EntityResource<ENTITY extends BaseEntity> extends Represen
                 .slash(entityName)
                 .slash(id)
                 .withRel("update").withType("PUT"));
+        add(linkTo(EntityController.class)
+                .slash(entityName)
+                .withRel("create new").withType("POST"));
     }
 
 }
