@@ -47,7 +47,7 @@ public class FlightService extends EntityService<Flight> {
         flight.setName(dto.getName());
         flight.setDesc(dto.getDesc());
         flight.setCapacity(dto.getCapacity());
-        flight.setPrice(dto.getPrice());
+        flight.setBasePrice(dto.getBasePrice());
 
         return save(flight);
     }
