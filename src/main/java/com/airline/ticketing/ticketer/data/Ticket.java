@@ -20,7 +20,7 @@ public class Ticket extends BaseEntity {
     @Column(name = "card_number")
     private String cardNumber;
 
-    @Column
+    @Column(nullable = false)
     private Double price;
 
     @Column

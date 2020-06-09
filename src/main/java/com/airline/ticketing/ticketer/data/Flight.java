@@ -20,10 +20,10 @@ public class Flight extends BaseEntity {
     @JoinColumn(name = "route_id", nullable = false)
     private Route route;
 
-    @Column
+    @Column(nullable = false)
     private Date date;
 
-    @Column
+    @Column(nullable = false)
     private Integer capacity;
 
     @Column(nullable = false)

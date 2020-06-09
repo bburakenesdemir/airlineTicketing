@@ -13,6 +13,6 @@ import javax.persistence.Table;
 @EqualsAndHashCode(callSuper = true)
 public class Airport extends BaseEntity {
 
-    @Column
+    @Column(nullable = false)
     private String city;
 }

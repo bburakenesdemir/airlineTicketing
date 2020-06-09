@@ -19,7 +19,7 @@ public class BaseEntity {
     @Column(name = "last_update_date")
     private Date lastUpdateDate;
 
-    @Column
+    @Column(nullable = false)
     private String name;
 
     @Column
