@@ -1,7 +1,6 @@
 package com.airline.ticketing.ticketer.data;
 
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 
 import javax.persistence.*;
 import java.sql.Date;
@@ -13,14 +12,14 @@ public class Flight extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "company_id", nullable = false)
-    private Company company;
+    public Company company;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "route_id", nullable = false)
-    private Route route;
+    public Route route;
 
     @Column(nullable = false)
-    private Date date;
+    public Date date;
 
     @Column(nullable = false)
     private Integer capacity;

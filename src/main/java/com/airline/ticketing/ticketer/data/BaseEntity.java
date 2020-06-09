@@ -11,17 +11,17 @@ public class BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
+    public Long id;
 
     @Column(name = "creation_date")
-    private Date creationDate;
+    public Date creationDate;
 
     @Column(name = "last_update_date")
-    private Date lastUpdateDate;
+    public Date lastUpdateDate;
 
     @Column(nullable = false)
-    private String name;
+    public String name;
 
     @Column
-    private String desc;
+    public String desc;
 }

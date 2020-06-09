@@ -3,7 +3,6 @@ package com.airline.ticketing.ticketer.resource;
 import com.airline.ticketing.ticketer.controller.EntityController;
 import com.airline.ticketing.ticketer.data.BaseEntity;
 import lombok.Data;
-import lombok.EqualsAndHashCode;
 import org.springframework.hateoas.RepresentationModel;
 
 import java.sql.Date;
