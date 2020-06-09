@@ -1,4 +1,4 @@
-# springboot-sample-app
+Airline Ticketer
 
 [![Build Status](https://api.travis-ci.org/mbogaz/airlineTicketing.svg?branch=master)](https://api.travis-ci.org/mbogaz/airlineTicketing.svg)
 [![Coverage Status](https://coveralls.io/repos/github/mbogaz/airlineTicketing/badge.svg?branch=master)](https://coveralls.io/github/mbogaz/airlineTicketing?branch=master)
