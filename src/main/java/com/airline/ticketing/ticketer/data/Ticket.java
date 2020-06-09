@@ -7,7 +7,9 @@ import javax.persistence.*;
 
 @Data
 @Entity
-@Table(name = "ticket")
+@Table(name = "ticket", uniqueConstraints={
+        @UniqueConstraint(columnNames = {"flight_id", "number"})
+})
 @EqualsAndHashCode(callSuper = true)
 public class Ticket extends BaseEntity {
 
@@ -18,4 +20,9 @@ public class Ticket extends BaseEntity {
     @Column(name = "card_number")
     private String cardNumber;
 
+    @Column
+    private Double price;
+
+    @Column
+    private String number;
 }

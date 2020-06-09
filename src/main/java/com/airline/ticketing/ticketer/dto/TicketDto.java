@@ -10,4 +10,6 @@ public class TicketDto extends EntityDto {
     private Long flightId;
 
     private String cardNumber;
+
+    private String number;
 }

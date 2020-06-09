@@ -11,4 +11,8 @@ public class TicketResource extends EntityResource {
     private Flight flight;
 
     private String cardNumber;
+
+    private Double price;
+
+    private String number;
 }
