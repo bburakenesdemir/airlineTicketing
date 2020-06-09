@@ -158,5 +158,17 @@ curl -X DELETE "http://localhost:8080/ticket/flight/1/number/a1" -H "accept: */*
 ```
 --- 
 *every 10% ticket sold increases the price by 10%
+
 *input card number removes non numeric characters and hides 6 digits
+
+*hateoas for generic response implemented, for entity crud operations
+
+*ci tool added, used https://api.travis-ci.org. You can check last commit's build status
+
+*Spring Test added, just for entity repository, not much more, because not required :)
+
+*swagger support, you can access from "/" path too, not need to ask swagger-ui.html
+
+*i did not added user & authentication, it is not required too
+
 
