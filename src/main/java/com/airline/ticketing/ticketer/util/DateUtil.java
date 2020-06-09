@@ -10,8 +10,8 @@ public class DateUtil {
 
     public static Date toFlightDate(String dateStr) {
         String dateFormat = "dd-MM-yyyy";
-        SimpleDateFormat sdf1 = new SimpleDateFormat(dateFormat); // New Pattern
-        java.util.Date date = null; // Returns a Date format object with the pattern
+        SimpleDateFormat sdf1 = new SimpleDateFormat(dateFormat);
+        java.util.Date date;
         try {
             date = sdf1.parse(dateStr);
         } catch (ParseException e) {

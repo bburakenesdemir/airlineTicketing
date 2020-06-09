@@ -13,4 +13,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     Page<Ticket> findAllByNameContainsOrDescContains(String namePart, String DescPart, Pageable pageable);
 
     Integer countAllByFlight(Flight flight);
+
+    Page<Ticket> findAllByFlight(Flight flight, Pageable pageable);
 }

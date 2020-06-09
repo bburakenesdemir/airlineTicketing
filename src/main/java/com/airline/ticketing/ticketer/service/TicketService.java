@@ -25,16 +25,27 @@ public class TicketService extends EntityService<Ticket> {
     @Synchronized
     public Ticket save(TicketDto dto) {
         Ticket ticket = new Ticket();
-        ticket.setFlight(flightService.getEntity(dto.getFlightId()));
-        ticket.setCardNumber(StringUtil.formatCardNumber(dto.getCardNumber()));
 
         PriceResource priceDetail = flightService.getPriceDetail(dto.getFlightId());
         ticket.setPrice(priceDetail.getCurrentPrice());
+        if(priceDetail.getCurrentCapacity()>=priceDetail.getTotalCapacity()) {
+            throw new RuntimeException("All seats are taken for this flight");
+        }
+
+        ticket.setFlight(flightService.getEntity(dto.getFlightId()));
+        ticket.setCardNumber(StringUtil.formatCardNumber(dto.getCardNumber()));
+        ticket.setName(dto.getName());
+        ticket.setDesc(dto.getDesc());
         return save(ticket);
     }
 
     public Integer countByFlight(Flight flight) {
         return ticketRepository.countAllByFlight(flight);
+    }
+
+    public Page<Ticket> pageableByFlight(Pageable pageable, Long flightId) {
+        Flight flight = flightService.getEntity(flightId);
+        return ticketRepository.findAllByFlight(flight, pageable);
     }
 
     @Override

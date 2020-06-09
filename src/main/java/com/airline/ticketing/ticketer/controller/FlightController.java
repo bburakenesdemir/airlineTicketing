@@ -34,7 +34,7 @@ public class FlightController extends EntityController<FlightDto, Flight, Flight
         return ResponseEntity.ok(resource);
     }
 
-    @RequestMapping(name = "/{id}/price",method = RequestMethod.GET)
+    @RequestMapping(value = "/{id}/price",method = RequestMethod.GET)
     public ResponseEntity<PriceResource> getPrice(@PathVariable("id") Long id) {
         return ResponseEntity.ok(flightService.getPriceDetail(id));
     }

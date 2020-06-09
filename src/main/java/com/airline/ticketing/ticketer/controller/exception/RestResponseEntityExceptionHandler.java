@@ -42,6 +42,11 @@ public class RestResponseEntityExceptionHandler extends ResponseEntityExceptionH
         return handleException(HttpStatus.BAD_REQUEST, ex, request);
    }
 
+    @ExceptionHandler
+    protected ResponseEntity<Object> handleRuntimeException(RuntimeException ex, WebRequest request) {
+        return handleException(HttpStatus.BAD_REQUEST, ex, request);
+    }
+
     private ResponseEntity<Object> handleException(HttpStatus status, RuntimeException ex, WebRequest request) {
         return handleExceptionInternal(ex, createErrorResource(status, ex.getMessage()),
                 new HttpHeaders(), status, request);

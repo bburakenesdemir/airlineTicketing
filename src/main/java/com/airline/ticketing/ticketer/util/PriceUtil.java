@@ -22,7 +22,7 @@ public class PriceUtil {
         PriceResource resource = new PriceResource();
         resource.setBasePrice(basePrice);
         resource.setCurrentPrice(Double.valueOf(df.format(currentPrice)));
-        resource.setTotalCapacity(capacity);
+        resource.setTotalCapacity(capacity / hundred);
         resource.setCurrentCapacity(ticketCount);
 
         return resource;
