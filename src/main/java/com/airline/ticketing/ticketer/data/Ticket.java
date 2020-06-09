@@ -10,7 +10,6 @@ import javax.persistence.*;
 @Table(name = "ticket", uniqueConstraints={
         @UniqueConstraint(columnNames = {"flight_id", "number"})
 })
-@EqualsAndHashCode(callSuper = true)
 public class Ticket extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)

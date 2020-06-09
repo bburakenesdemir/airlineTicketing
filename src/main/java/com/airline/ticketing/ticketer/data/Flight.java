@@ -9,7 +9,6 @@ import java.sql.Date;
 @Data
 @Entity
 @Table(name = "flight")
-@EqualsAndHashCode(callSuper = true)
 public class Flight extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)

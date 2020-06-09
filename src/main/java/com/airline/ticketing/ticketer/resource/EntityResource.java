@@ -10,7 +10,6 @@ import java.sql.Date;
 
 import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
 
-@EqualsAndHashCode(callSuper = true)
 @Data
 public abstract class EntityResource<ENTITY extends BaseEntity> extends RepresentationModel<EntityResource<ENTITY>> {
 

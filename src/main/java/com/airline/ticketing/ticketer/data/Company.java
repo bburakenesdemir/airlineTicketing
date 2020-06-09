@@ -9,7 +9,6 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "company")
-@EqualsAndHashCode(callSuper = true)
 public class Company extends BaseEntity {
 
 }

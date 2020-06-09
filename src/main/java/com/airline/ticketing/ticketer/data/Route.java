@@ -8,7 +8,6 @@ import javax.persistence.*;
 @Data
 @Entity
 @Table(name = "route")
-@EqualsAndHashCode(callSuper = true)
 public class Route extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)

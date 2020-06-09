@@ -10,7 +10,6 @@ import javax.persistence.Table;
 @Data
 @Entity
 @Table(name = "airport")
-@EqualsAndHashCode(callSuper = true)
 public class Airport extends BaseEntity {
 
     @Column(nullable = false)
