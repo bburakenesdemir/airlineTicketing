@@ -25,7 +25,6 @@ public class PriceUtil {
         resource.setTotalCapacity(capacity);
         resource.setCurrentCapacity(ticketCount);
 
-        System.out.println(resource);
         return resource;
     }
 }

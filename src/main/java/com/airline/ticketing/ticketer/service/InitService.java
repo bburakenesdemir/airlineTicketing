@@ -34,7 +34,6 @@ public class InitService {
         Airport airport2 = createAirport("ankara");
         Route route = createRoute(airport1, airport2);
         Flight flight = createFlight(company, route, 40);
-        System.out.println(flight);
 
         for (int i = 1; i <= 40; i++) {
             createTicket(flight, i);
