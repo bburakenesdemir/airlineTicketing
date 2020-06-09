@@ -3,6 +3,10 @@ package com.airline.ticketing.ticketer.service;
 import com.airline.ticketing.ticketer.data.Flight;
 import com.airline.ticketing.ticketer.data.Ticket;
 import com.airline.ticketing.ticketer.data.repository.TicketRepository;
+import com.airline.ticketing.ticketer.dto.TicketDto;
+import com.airline.ticketing.ticketer.resource.PriceResource;
+import com.airline.ticketing.ticketer.util.StringUtil;
+import lombok.Synchronized;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -14,6 +18,20 @@ public class TicketService extends EntityService<Ticket> {
 
     @Autowired
     private TicketRepository ticketRepository;
+
+    @Autowired
+    private FlightService flightService;
+
+    @Synchronized
+    public Ticket save(TicketDto dto) {
+        Ticket ticket = new Ticket();
+        ticket.setFlight(flightService.getEntity(dto.getFlightId()));
+        ticket.setCardNumber(StringUtil.formatCardNumber(dto.getCardNumber()));
+
+        PriceResource priceDetail = flightService.getPriceDetail(dto.getFlightId());
+        ticket.setPrice(priceDetail.getCurrentPrice());
+        return save(ticket);
+    }
 
     public Integer countByFlight(Flight flight) {
         return ticketRepository.countAllByFlight(flight);

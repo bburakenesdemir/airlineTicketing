@@ -8,7 +8,10 @@ import com.airline.ticketing.ticketer.resource.TicketResource;
 import com.airline.ticketing.ticketer.service.EntityService;
 import com.airline.ticketing.ticketer.service.TicketService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -20,6 +23,12 @@ public class TicketController extends EntityController<TicketDto, Ticket, Ticket
 
     @Autowired
     private TicketMapper ticketMapper;
+
+    @Override
+    @RequestMapping(method = RequestMethod.POST)
+    public ResponseEntity<TicketResource> save(@RequestBody TicketDto dto) {
+        return ResponseEntity.ok(ticketMapper.toResource(ticketService.save(dto)));
+    }
 
     @Override
     public EntityService<Ticket> getService() {
