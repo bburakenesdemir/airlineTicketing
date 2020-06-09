@@ -147,6 +147,15 @@ curl -X POST "http://localhost:8080/ticket" -H "accept: */*" -H "Content-Type: a
 ```
 after this request, card number stores like this : "123412******1234"
 
+--get ticket by ticket number
+```shell
+curl -X GET "http://localhost:8080/ticket/flight/1/number/a1" -H "accept: */*"
+```
+
+--delete ticket by ticket number
+```shell
+curl -X DELETE "http://localhost:8080/ticket/flight/1/number/a1" -H "accept: */*"
+```
 --- 
 *every 10% ticket sold increases the price by 10%
 *input card number removes non numeric characters and hides 6 digits

@@ -7,6 +7,7 @@ import com.airline.ticketing.ticketer.dto.TicketDto;
 import com.airline.ticketing.ticketer.resource.PriceResource;
 import com.airline.ticketing.ticketer.util.StringUtil;
 import lombok.Synchronized;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -28,7 +29,7 @@ public class TicketService extends EntityService<Ticket> {
 
         PriceResource priceDetail = flightService.getPriceDetail(dto.getFlightId());
         ticket.setPrice(priceDetail.getCurrentPrice());
-        if(priceDetail.getCurrentCapacity()>=priceDetail.getTotalCapacity()) {
+        if (priceDetail.getCurrentCapacity() >= priceDetail.getTotalCapacity()) {
             throw new RuntimeException("All seats are taken for this flight");
         }
 
@@ -46,6 +47,19 @@ public class TicketService extends EntityService<Ticket> {
     public Page<Ticket> pageableByFlight(Pageable pageable, Long flightId) {
         Flight flight = flightService.getEntity(flightId);
         return ticketRepository.findAllByFlight(flight, pageable);
+    }
+
+    public Ticket findByNumber(Long flightId, String number) {
+        if (StringUtils.isEmpty(number)) {
+            throw new RuntimeException("Number must be declared");
+        }
+        Flight flight = flightService.getEntity(flightId);
+        return ticketRepository.findTopByFlightAndNumber(flight, number);
+    }
+
+    public void deleteByNumber(Long flightId, String number) {
+        Ticket ticket = findByNumber(flightId, number);
+        getRepository().delete(ticket);
     }
 
     @Override

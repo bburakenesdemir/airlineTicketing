@@ -15,4 +15,6 @@ public interface TicketRepository extends JpaRepository<Ticket, Long> {
     Integer countAllByFlight(Flight flight);
 
     Page<Ticket> findAllByFlight(Flight flight, Pageable pageable);
+
+    Ticket findTopByFlightAndNumber(Flight flight, String number);
 }

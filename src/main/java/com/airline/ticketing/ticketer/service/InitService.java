@@ -35,7 +35,7 @@ public class InitService {
         Route route = createRoute(airport1, airport2);
         Flight flight = createFlight(company, route, 40);
 
-        for (int i = 1; i <= 40; i++) {
+        for (int i = 1; i <= 39; i++) {
             createTicket(flight, i);
         }
     }
