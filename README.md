@@ -126,6 +126,7 @@ it returns :
  ```
 
 --get tickets for a flight
+
 it again pageable
 ```shell
 curl -X GET "http://localhost:8080/ticket/flight/1?direction=ASC&pageNo=0&pageSize=10&sortBy=id" -H "accept: */*"
