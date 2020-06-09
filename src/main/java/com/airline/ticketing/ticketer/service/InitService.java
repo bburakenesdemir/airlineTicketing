@@ -1,6 +1,7 @@
 package com.airline.ticketing.ticketer.service;
 
 import com.airline.ticketing.ticketer.data.*;
+import com.airline.ticketing.ticketer.util.PriceUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -35,7 +36,7 @@ public class InitService {
         Flight flight = createFlight(company, route, 40);
         System.out.println(flight);
 
-        for (int i = 1; i <= 5; i++) {
+        for (int i = 1; i <= 40; i++) {
             createTicket(flight, i);
         }
     }
@@ -47,6 +48,8 @@ public class InitService {
         ticket.setName("ticket" + index);
         ticket.setDesc("ticket" + index + " desc");
 
+        Integer ticketCount = ticketService.countByFlight(flight);
+        ticket.setPrice(PriceUtil.calculateCurrentPrice(flight, ticketCount).getCurrentPrice());
         return ticketService.save(ticket);
     }
 
@@ -58,6 +61,7 @@ public class InitService {
         flight.setCompany(company);
         flight.setRoute(route);
         flight.setCapacity(capacity);
+        flight.setBasePrice(60.0);
         return flightService.save(flight);
     }
 
